@@ -1,5 +1,12 @@
-import pygame
 import random
+
+while True:
+    try:
+        import pygame
+        break
+    except ModuleNotFoundError:
+        import pip
+        pip.main(["install", "pygame"])
 
 class SnakeWindow:
 
