@@ -15,8 +15,8 @@ class SnakeWindow:
 
         # colors
         self.black = (0, 0, 0)
-        self.green = (0, 255, 0)
-        self.red = (255, 0, 0)
+        self.green = (0, 196, 0)
+        self.red = (196, 0, 0)
 
         # body square edge
         self.edge = 16
@@ -32,8 +32,8 @@ class SnakeWindow:
     def fill(self, color: tuple[int, int, int] = (0, 0, 0)) -> None:
         self.screen.fill(color)
 
-    def square(self, color: tuple[int, int, int], pos: tuple[int, int]) -> None:
-        pygame.draw.rect(self.screen, color, (pos[0], pos[1], self.edge, self.edge))
+    def square(self, color: tuple[int, int, int], pos: tuple[int, int], width: int = 3) -> None:
+        pygame.draw.rect(self.screen, color, (pos[0], pos[1], self.edge, self.edge), width)
 
     def checkBodyCollision(self) -> bool:
         if len(set(self.pos)) != len(self.pos):
@@ -137,6 +137,7 @@ class SnakeWindow:
     def run(self) -> None:
         self.snakeInit()
 
+        pygame.mixer.stop()
         self.isEnd = False
         running = True
         while running:
